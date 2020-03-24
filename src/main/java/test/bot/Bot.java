@@ -1,13 +1,13 @@
-package test;
+package test.bot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.TelegramBotsApi;
-import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.objects.Message;
-import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import test.service.AppService;
 
 public class Bot extends TelegramLongPollingBot {
@@ -17,6 +17,7 @@ public class Bot extends TelegramLongPollingBot {
     public void setAppService(AppService appService) {
         this.appService = appService;
     }
+
 
     @Override
     public String getBotToken() {
@@ -33,7 +34,9 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
             switch (message.getText()) {
-
+                case "Минск":
+                    msgSend(message, "Посетите национальную Библиотеку и Зыбицкую ;) ");
+                    break;
                 default:
                     msgSend(message, "К сожалению такого города нет,но мы обязательно его добавим");
                     break;

@@ -4,18 +4,18 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="geography")
+@Table(name = "geography")
 public class Geography {
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-@Column(name ="id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
-@Column(name = "City")
-private String nameCity;
+    @Column(name = "City")
+    private String nameCity;
 
-@Column(name="Description")
-    private  String description;
+    @Column(name = "Description")
+    private String description;
 
     public long getId() {
         return id;
