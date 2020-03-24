@@ -30,4 +30,22 @@ public class AppDaoImpl implements AppDao {
         session.persist(geography);
         return true;
     }
+
+    @Override
+    public Geography findByIdDao(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Geography.class, id);
+    }
+
+    @Override
+    public void editNoteDao(Geography geography) {
+        Session session = sessionFactory.getCurrentSession();
+        session.merge(geography);
+    }
+
+    @Override
+    public void deleteNoteDao(Geography geography) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(geography);
+    }
 }

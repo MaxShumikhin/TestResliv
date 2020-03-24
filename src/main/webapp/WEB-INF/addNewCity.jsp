@@ -1,11 +1,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: BVK
-  Date: 3/24/2020
-  Time: 16:17
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=utf8"
          pageEncoding="utf8" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,12 +6,14 @@
 <head>
     <title>Add</title>
     <style>
-        .center{text-align:  center;}
+        .center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <div class="center">
-    <h1><b>Добавте новый город и описание</b></h1><br>
+    <h1><b>Добавление нового города</b></h1><br>
 
 <form:form method="post" action="registration" modelAttribute="newCity">
     <input     type="text" name="nameCity" placeholder="Город"><br>
@@ -31,7 +26,7 @@
     </p>
 </form:form>
     <form action="/all">
-        <input type="submit" value="Назад">
+        <input type="submit" value="Выход">
     </form>
 
 </div>

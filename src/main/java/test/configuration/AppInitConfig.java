@@ -19,4 +19,6 @@ public class AppInitConfig extends AbstractAnnotationConfigDispatcherServletInit
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
+
 }

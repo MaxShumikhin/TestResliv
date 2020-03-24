@@ -1,57 +1,57 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Maksim
-  Date: 23.03.2020
-  Time: 22:31
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=utf8"
+         pageEncoding="utf8" %>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <html>
 <head>
     <title>Information</title>
     <style>
-        table {margin: auto;}
-        .center{text-align:  center;}
+        table {
+            margin: auto;
+        }
+
+        .center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 <div class="center">
     <h1><b>Полная информация</b></h1><br>
 
-    <table border="2" >
+    <table border="2">
         <tr>
-            <th>Id</th>
             <th>Город</th>
             <th>Информация</th>
+            <th>Действия</th>
 
         </tr>
         <c:forEach items="${geographyList}" var="geographyList">
             <tr>
-                <td>${geographyList.id}</td>
                 <td>${geographyList.nameCity}</td>
                 <td>${geographyList.description}</td>
                 <td>
                     <br>
-                    <form action="update/${geographyList.id}" method="get">
+                    <form action="edit/${geographyList.id}" method="get">
                         <input type="submit" value="Редактировать">
                     </form>
                     <br>
                     <br>
                     <form action="/delete" method="get">
                         <input type="hidden" name="id" value="${geographyList.id}">
-                        <input type="submit" value="удалить">
+                        <input type="hidden" name="nameCity" value="${geographyList.nameCity}">
+                        <input type="submit" value="Удалить">
                     </form>
                 </td>
             </tr>
         </c:forEach>
     </table>
 
-<p>
-<form action="/add" method="get">
-    <input type="submit" value="Добавить новый город и описание"/>
-</form>
-</p>
+    <p>
+    <form action="/add" method="get">
+        <input type="submit" value="Добавить новый город и описание"/>
+    </form>
+    </p>
 </div>
 </body>
 </html>

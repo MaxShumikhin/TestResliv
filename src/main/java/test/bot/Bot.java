@@ -37,6 +37,7 @@ public class Bot extends TelegramLongPollingBot {
                 case "Минск":
                     msgSend(message, "Посетите национальную Библиотеку и Зыбицкую ;) ");
                     break;
+
                 default:
                     msgSend(message, "К сожалению такого города нет,но мы обязательно его добавим");
                     break;
@@ -44,7 +45,7 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    public void msgSend(Message message, String text) {
+    private void msgSend(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(message.getChatId().toString());
@@ -56,7 +57,6 @@ public class Bot extends TelegramLongPollingBot {
             e.printStackTrace();
         }
     }
-
 
     public static void main(String[] args) {
         ApiContextInitializer.init();

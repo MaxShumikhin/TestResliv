@@ -41,12 +41,40 @@ public class AppControl {
     }
 
     @RequestMapping(value = "registration", method = RequestMethod.POST)
-    public void addNewCityToBD(@ModelAttribute("newCity") Geography geography) {
+    public String addNewCityToBD(@ModelAttribute("newCity") Geography geography) {
         if (appService.addNewCity(geography)) {
-            mainPage();
+            return "redirect:/all";
         } else {
-            addNewCity();
+            return "addNewCity";
         }
     }
+
+    @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
+    public ModelAndView goToEditPage(@ModelAttribute("id") long id) {
+        Geography geography = appService.findById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editPage");
+        modelAndView.addObject("geography", geography);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String editCity(@ModelAttribute("geography") Geography geography){
+        appService.editNote(geography);
+        return "redirect:/all";
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.GET)
+    public String goToDeletePage() {
+        return "deletePage";
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String deletePage(int id) {
+        Geography geography = appService.findById(id);
+        appService.deleteNote(geography);
+        return "redirect: /all";
+    }
+
 
 }
