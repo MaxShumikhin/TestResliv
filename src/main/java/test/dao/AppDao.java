@@ -7,4 +7,5 @@ import java.util.List;
 public interface AppDao {
     List<Geography> allInfoDao();
 
+    boolean addNewCityDao(Geography geography);
 }

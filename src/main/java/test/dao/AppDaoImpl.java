@@ -23,4 +23,11 @@ public class AppDaoImpl implements AppDao {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Geography", Geography.class).list();
     }
+
+    @Override
+    public boolean addNewCityDao(Geography geography) {
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(geography);
+        return true;
+    }
 }

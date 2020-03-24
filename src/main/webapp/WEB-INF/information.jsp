@@ -11,6 +11,7 @@
 <head>
     <title>Information</title>
     <style>
+        table {margin: auto;}
         .center{text-align:  center;}
     </style>
 </head>
@@ -18,7 +19,7 @@
 <div class="center">
     <h1><b>Полная информация</b></h1><br>
 
-    <table border="2">
+    <table border="2" >
         <tr>
             <th>Id</th>
             <th>Город</th>
@@ -45,6 +46,12 @@
             </tr>
         </c:forEach>
     </table>
+
+<p>
+<form action="/add" method="get">
+    <input type="submit" value="Добавить новый город и описание"/>
+</form>
+</p>
 </div>
 </body>
 </html>

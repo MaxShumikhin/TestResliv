@@ -2,6 +2,7 @@ package test.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,13 +26,26 @@ public class AppControl {
         return "mainPage";
     }
 
-    @RequestMapping(value = "enter", method = RequestMethod.GET)
+    @RequestMapping(value = "all", method = RequestMethod.GET)
     public ModelAndView allInformation() {
         List<Geography> geographyList = appService.allInfo();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("information");
-        modelAndView.addObject("geographyList",geographyList);
+        modelAndView.addObject("geographyList", geographyList);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "add", method = RequestMethod.GET)
+    public String addNewCity() {
+        return "addNewCity";
+    }
+
+    @RequestMapping(value = "registration", method = RequestMethod.POST)
+    public String addNewCityToBD(@ModelAttribute("newCity") Geography geography) {
+       if (appService.addNewCity(geography)){
+        return "information";
+       }
+       return "addNewCity";
     }
 
 }

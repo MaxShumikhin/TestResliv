@@ -17,7 +17,7 @@
 <div class="center">
     <h1><b>Добро пожаловать</b></h1><br>
     <p>
-    <form action="/enter" method="get">
+    <form action="/all" method="get">
         <input type="submit" value="Вход"> <br><br>
     </form>
     </p>

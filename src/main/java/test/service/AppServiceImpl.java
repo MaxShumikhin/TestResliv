@@ -24,7 +24,13 @@ public class AppServiceImpl implements AppService {
         return appDao.allInfoDao();
     }
 
-  /*  public String findByName(String cityName){
+    @Override
+    @Transactional
+    public boolean addNewCity(Geography geography) {
+        return appDao.addNewCityDao(geography);
+    }
+
+    /*  public String findByName(String cityName){
         Geography geography = appDao.findByNameDao();
         String nameCity = geography.getNameCity();
         return nameCity;
