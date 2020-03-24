@@ -41,11 +41,12 @@ public class AppControl {
     }
 
     @RequestMapping(value = "registration", method = RequestMethod.POST)
-    public String addNewCityToBD(@ModelAttribute("newCity") Geography geography) {
-       if (appService.addNewCity(geography)){
-        return "information";
-       }
-       return "addNewCity";
+    public void addNewCityToBD(@ModelAttribute("newCity") Geography geography) {
+        if (appService.addNewCity(geography)) {
+            mainPage();
+        } else {
+            addNewCity();
+        }
     }
 
 }
