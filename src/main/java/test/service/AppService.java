@@ -16,4 +16,6 @@ public interface AppService {
 
     void deleteNote(Geography geography);
 
+    String  findByName(String cityName);
+
 }

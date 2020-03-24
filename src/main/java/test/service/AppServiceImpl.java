@@ -48,9 +48,9 @@ public class AppServiceImpl implements AppService {
         appDao.deleteNoteDao(geography);
     }
 
-    /*  public String findByName(String cityName){
-        Geography geography = appDao.findByNameDao();
-        String nameCity = geography.getNameCity();
-        return nameCity;
-    }*/
+    @Override
+    @Transactional
+      public String findByName(String cityName){
+          return  appDao.findByNameDao(cityName);
+    }
 }

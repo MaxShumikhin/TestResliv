@@ -14,4 +14,6 @@ public interface AppDao {
     void editNoteDao(Geography geography);
 
     void deleteNoteDao(Geography geography);
+
+    String findByNameDao(String cityName);
 }

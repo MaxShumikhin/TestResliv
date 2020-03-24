@@ -2,6 +2,7 @@ package test.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import test.entity.Geography;
@@ -47,5 +48,13 @@ public class AppDaoImpl implements AppDao {
     public void deleteNoteDao(Geography geography) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(geography);
+    }
+
+    @Override
+    public String  findByNameDao(String cityName){
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("Description from Geography where City ='"+ cityName +"';",Geography.class);
+
+        return query.getQueryString();
     }
 }
