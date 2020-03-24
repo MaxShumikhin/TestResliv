@@ -33,4 +33,5 @@ public class AppControl {
         modelAndView.addObject("geographyList",geographyList);
         return modelAndView;
     }
+
 }
