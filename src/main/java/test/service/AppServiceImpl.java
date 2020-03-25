@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import test.dao.AppDao;
+import test.dao.AppDaoImpl;
 import test.entity.Geography;
 
 import java.util.List;
@@ -50,9 +51,10 @@ public class AppServiceImpl implements AppService {
 
     @Override
     @Transactional
-    public String findByName(String cityName){
-      List<Geography> geographyList =  appDao.findByNameDao(cityName);
-        String answer = geographyList.toString();
-        return answer;
+    public String findByName(String cityName) {
+        AppDao appDao1 = new AppDaoImpl();
+        Geography geo = appDao1.findByNameDao(cityName);
+        String s = geo.toString();
+        return s;
     }
 }

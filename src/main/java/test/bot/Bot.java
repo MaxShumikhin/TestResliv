@@ -1,6 +1,5 @@
 package test.bot;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -8,11 +7,13 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import test.entity.Geography;
 import test.service.AppService;
+import test.service.AppServiceImpl;
 
 
 public class Bot extends TelegramLongPollingBot {
-    AppService appService;
+    AppService appService = new AppServiceImpl();
 
     @Override
     public String getBotToken() {
@@ -29,8 +30,9 @@ public class Bot extends TelegramLongPollingBot {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
             String cityName = message.getText();
-
-           String description = appService.findByName(cityName);
+            System.out.println(cityName);
+            String description = appService.findByName(cityName);
+            System.out.println(description);
             if (message.getText().equalsIgnoreCase(cityName)) {
                 msgSend(message, description);
             }
