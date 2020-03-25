@@ -8,17 +8,11 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import test.entity.Geography;
 import test.service.AppService;
+
 
 public class Bot extends TelegramLongPollingBot {
     AppService appService;
-
-    @Autowired
-    public void setAppService(AppService appService) {
-        this.appService = appService;
-    }
-
 
     @Override
     public String getBotToken() {
@@ -34,16 +28,23 @@ public class Bot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
         if (message != null && message.hasText()) {
-            String nameCity = message.getText();
-            String result = appService.findByName(nameCity);
-            switch (nameCity) {
+            String cityName = message.getText();
+
+           String description = appService.findByName(cityName);
+            if (message.getText().equalsIgnoreCase(cityName)) {
+                msgSend(message, description);
+            }
+
+         /*   switch (message.getText()) {
                 case "New York":
-                    msgSend(message, result);
+                    msgSend(message,"ggg");
                     break;
+                case "/help":
+                    msgSend(message,"введите название города");
                 default:
                     msgSend(message, "К сожалению такого города нет,но мы обязательно его добавим");
                     break;
-            }
+            }*/
         }
     }
 

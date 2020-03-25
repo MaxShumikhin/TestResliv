@@ -1,9 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page language="java" contentType="text/html; charset=utf8"
-         pageEncoding="utf8" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8" %>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"\>
     <title>Add</title>
     <style>
         .center {
@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="center">
-    <h1><b>Добавление нового города</b></h1><br>
+    <h1><b>Добавте новые данные</b></h1><br>
 
 <form:form method="post" action="registration" modelAttribute="newCity">
     <input     type="text" name="nameCity" placeholder="Город"><br>
@@ -26,7 +26,7 @@
     </p>
 </form:form>
     <form action="/all">
-        <input type="submit" value="Выход">
+        <input type="submit" value="Выйти">
     </form>
 
 </div>

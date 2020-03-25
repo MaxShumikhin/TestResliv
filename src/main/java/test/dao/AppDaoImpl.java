@@ -28,6 +28,7 @@ public class AppDaoImpl implements AppDao {
     @Override
     public boolean addNewCityDao(Geography geography) {
         Session session = sessionFactory.getCurrentSession();
+
         session.persist(geography);
         return true;
     }
@@ -51,10 +52,11 @@ public class AppDaoImpl implements AppDao {
     }
 
     @Override
-    public String  findByNameDao(String cityName){
+    public List findByNameDao(String cityName) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("Description from Geography where City ='"+ cityName +"';",Geography.class);
-
-        return query.getQueryString();
+        Query query = session.createQuery("select Description from Geography where city = :cityName");
+        query.setParameter("cityName", cityName);
+        return query.list();
     }
+
 }

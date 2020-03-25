@@ -55,4 +55,9 @@ public class Geography {
     public int hashCode() {
         return Objects.hash(id, nameCity, description);
     }
+
+    @Override
+    public String toString() {
+        return  description;
+    }
 }

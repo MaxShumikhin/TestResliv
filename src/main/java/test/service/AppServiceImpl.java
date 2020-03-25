@@ -50,7 +50,9 @@ public class AppServiceImpl implements AppService {
 
     @Override
     @Transactional
-      public String findByName(String cityName){
-          return  appDao.findByNameDao(cityName);
+    public String findByName(String cityName){
+      List<Geography> geographyList =  appDao.findByNameDao(cityName);
+        String answer = geographyList.toString();
+        return answer;
     }
 }

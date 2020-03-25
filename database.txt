@@ -1,0 +1,16 @@
+CREATE SCHEMA `turfirma` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+use turfirma;
+
+CREATE TABLE `turfirma`.`geography` (
+  `id` BIGINT(10) NOT NULL AUTO_INCREMENT,
+  `City` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL,
+  `Description` VARCHAR(250) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+insert into geography values
+(null,'Минск','столица Беларуси'),
+(null,'Москва','столица России'),
+(null,'Киев','столица Украины');
