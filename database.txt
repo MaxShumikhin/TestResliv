@@ -3,9 +3,10 @@ use turfirma;
 
 CREATE TABLE `turfirma`.`geography` (
   `id` BIGINT(10) NOT NULL AUTO_INCREMENT,
-  `City` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL,
-  `Description` VARCHAR(250) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL,
-  PRIMARY KEY (`id`))
+  `city` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL,
+  `description` VARCHAR(250) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `city_UNIQUE` (`city` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
