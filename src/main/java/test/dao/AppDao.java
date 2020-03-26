@@ -15,5 +15,5 @@ public interface AppDao {
 
     void deleteNoteDao(Geography geography);
 
-    Geography findByNameDao(String cityName);
+    Geography findByNameDao(String  cityName);
 }

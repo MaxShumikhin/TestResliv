@@ -51,10 +51,12 @@ public class AppServiceImpl implements AppService {
 
     @Override
     @Transactional
-    public String findByName(String cityName) {
-        AppDao appDao1 = new AppDaoImpl();
-        Geography geo = appDao1.findByNameDao(cityName);
-        String s = geo.toString();
-        return s;
+    public String findByName(String cityname) {
+       AppDao appDao1 = new AppDaoImpl();
+        Geography geography = appDao1.findByNameDao(cityname);
+        if(geography!=null) {
+            String description = geography.toString();
+            return description;
+        } else return "нет";
     }
 }

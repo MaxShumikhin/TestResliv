@@ -2,16 +2,18 @@ package test.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import test.entity.Geography;
+import test.service.HibernateUtil;
 
 import java.util.List;
 
 @Repository
 public class AppDaoImpl implements AppDao {
-
+    private Transaction transaction;
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -28,7 +30,6 @@ public class AppDaoImpl implements AppDao {
     @Override
     public boolean addNewCityDao(Geography geography) {
         Session session = sessionFactory.getCurrentSession();
-
         session.persist(geography);
         return true;
     }
@@ -53,16 +54,15 @@ public class AppDaoImpl implements AppDao {
 
     @Override
     public Geography findByNameDao(String cityName) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select from geography where City = '" + cityName+"';");
-        query.setParameter("nameCity", cityName);
-        Geography geo = (Geography) query.getSingleResult();
-
-/*Geography geo = new Geography();
-geo.setNameCity("ggg");
-geo.setDescription("gggg");
-geo.setId(2);*/
-        return geo;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery("from Geography where city = :cityName");
+        query.setParameter("cityName", cityName);
+        if(query.list().isEmpty()){
+            return null;
+        } else {
+            Geography geography = (Geography) query.getSingleResult();
+            return geography;
+        }
     }
 
 }

@@ -32,7 +32,6 @@ public class AppInitConfig extends AbstractAnnotationConfigDispatcherServletInit
         charEncodingFilterReg.addMappingForUrlPatterns(null, false, "/*");
     }
 
-
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootConfig.class};
@@ -47,6 +46,5 @@ public class AppInitConfig extends AbstractAnnotationConfigDispatcherServletInit
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
-
 
 }

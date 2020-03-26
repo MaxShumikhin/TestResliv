@@ -16,7 +16,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "test")
-@PropertySource("classpath:database.properties")
+@PropertySource("classpath:hibernate.properties")
 @EnableTransactionManagement
 public class RootConfig {
     private Environment environment;

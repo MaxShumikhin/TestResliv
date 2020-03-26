@@ -11,7 +11,7 @@ public class Geography {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "City")
+    @Column(name = "City", unique = true)
     private String nameCity;
 
     @Column(name = "Description")
